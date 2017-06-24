@@ -1,18 +1,25 @@
 defmodule CcValidation do
   @moduledoc """
-  Documentation for CcValidation.
+  CcValidation implements methods to verify validity of a credit card number
   """
 
+  defmacro name do
+
+  end
+
   @doc """
-  Hello world.
+  Card numbers that are of length less than 13 or greater than 19 are invalid.
 
   ## Examples
 
-      iex> CcValidation.hello
-      :world
+      iex> CcValidation.validate("123")
+      {:error, false}
 
+      iex> CcValidation.validate("12345678901234567890")
+      {:error, false}
   """
-  def hello do
-    :world
+  def validate(number)
+    when byte_size(number) < 13 or byte_size(number) > 19 do
+      {:error, false}
   end
 end
