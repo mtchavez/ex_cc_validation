@@ -57,15 +57,28 @@ defmodule CcValidation do
       {:ok, true}
 
   Invalid credit card
-      iex> CcValidation.validate("4024007106963134")
+      iex> CcValidation.validate("4024007106963124")
       {:error, false}
   """
   def validate(number, false) do
     total = String.codepoints(number)
     |> Enum.reverse
     |> Stream.with_index
-    |> Enum.filter_map(fn({_, i}) -> rem(i + 1, 2) == 0 end, fn({n, _}) -> String.to_integer(n) * 2 end)
+    |> Enum.map(fn {num, i} ->
+        remainder =  rem(i + 1, 2)
+        if remainder == 0 do
+          doubled = String.to_integer(num) * 2
+          if doubled > 9 do
+            doubled - 9
+          else
+            doubled
+          end
+        else
+          String.to_integer(num)
+        end
+      end)
     |> Enum.sum
+
     case rem(total, 10) do
       0 ->
         {:ok, true}
