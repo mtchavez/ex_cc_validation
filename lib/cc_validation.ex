@@ -3,10 +3,6 @@ defmodule CcValidation do
   CcValidation implements methods to verify validity of a credit card number
   """
 
-  defmacro name do
-
-  end
-
   @doc """
   Card numbers that are of length less than 13 or greater than 19 are invalid.
 
