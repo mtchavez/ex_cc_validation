@@ -3,6 +3,34 @@ defmodule CcValidation do
   CcValidation implements methods to verify validity of a credit card number
   """
 
+  def validate(number, check_test_numbers \\ false)
+
+  @doc """
+  Validate test card numbers when check_test_numbers is true
+
+  A valid test card
+      iex> CcValidation.validate("4111111111111111", true)
+      {:ok, true, test_number: true}
+
+  An invalid test card
+      iex> CcValidation.validate("4212121212121212", true)
+      {:error, false, test_number: false}
+
+  A valid card when checking for test numbers just passes through
+  to the validate function but will also return that it is not
+  a test card
+      iex> CcValidation.validate("4716892095589823", true)
+      {:ok, true, test_number: false}
+  """
+  def validate(number, true) do
+    case CcValidation.TestNumbers.has_number?(number) do
+      true ->
+        {:ok, true, test_number: true}
+      false ->
+        Tuple.append(validate(number), test_number: false)
+    end
+  end
+
   @doc """
   Card numbers that are of length less than 13 or greater than 19 are invalid.
 
@@ -14,7 +42,7 @@ defmodule CcValidation do
       iex> CcValidation.validate("12345678901234567890")
       {:error, false}
   """
-  def validate(number)
+  def validate(number, false)
     when byte_size(number) < 13 or byte_size(number) > 19 do
       {:error, false}
   end
@@ -32,7 +60,7 @@ defmodule CcValidation do
       iex> CcValidation.validate("4024007106963134")
       {:error, false}
   """
-  def validate(number) do
+  def validate(number, false) do
     total = String.codepoints(number)
     |> Enum.reverse
     |> Stream.with_index
