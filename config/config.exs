@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :ex_cc_validation, key: :value
+#     config :cc_validation, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:ex_cc_validation, :key)
+#     Application.get_env(:cc_validation, :key)
 #
 # Or configure a 3rd-party app:
 #
