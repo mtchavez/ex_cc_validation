@@ -7,7 +7,17 @@ defmodule CcValidation.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+
+     # Docs
+     name: "CcValidation",
+     source_url: "https://github.com/mtchavez/ex_cc_validation",
+     homepage_url: "https://github.com/mtchavez/ex_cc_validation",
+     docs: [
+       main: "CcValidation", # The main page in the docs
+       extras: ["README.md"]
+     ]
+  ]
   end
 
   # Configuration for the OTP application
@@ -28,6 +38,8 @@ defmodule CcValidation.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+    ]
   end
 end
