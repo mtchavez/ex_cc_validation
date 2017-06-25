@@ -2,21 +2,24 @@ defmodule CcValidation.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :cc_validation,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps(),
+    [
+      app: :cc_validation,
+      version: "0.1.0",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+      description: description(),
+      package: package(),
 
-     # Docs
-     name: "CcValidation",
-     source_url: "https://github.com/mtchavez/ex_cc_validation",
-     homepage_url: "https://github.com/mtchavez/ex_cc_validation",
-     docs: [
-       main: "CcValidation", # The main page in the docs
-       extras: ["README.md"]
-     ]
+      # Docs
+      name: "CcValidation",
+      source_url: "https://github.com/mtchavez/ex_cc_validation",
+      homepage_url: "https://github.com/mtchavez/ex_cc_validation",
+      docs: [
+        main: "CcValidation", # The main page in the docs
+        extras: ["README.md"]
+      ]
   ]
   end
 
@@ -40,6 +43,24 @@ defmodule CcValidation.Mixfile do
   defp deps do
     [
       {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+    ]
+  end
+
+  defp description do
+    """
+    Validate credit card number format using Luhn Algorithm and allows for
+    checking test card numbers.
+    """
+  end
+
+  defp package do
+    # These are the default files included in the package
+    [
+      name: :cc_validation,
+      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      maintainers: ["mtchavez"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/mtchavez/ex_cc_validation"}
     ]
   end
 end
