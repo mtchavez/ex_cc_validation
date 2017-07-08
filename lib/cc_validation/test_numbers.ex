@@ -27,14 +27,14 @@ defmodule CcValidation.TestNumbers do
   Check that a number is a valid test number or not
 
   A valid test card
-      iex> CcValidation.TestNumbers.has_number?("4111111111111111")
+      iex> CcValidation.TestNumbers.exists?("4111111111111111")
       true
 
   An invalid test card
-      iex> CcValidation.TestNumbers.has_number?("4212121212121212")
+      iex> CcValidation.TestNumbers.exists?("4212121212121212")
       false
   """
-  def has_number?(number) do
-    Map.has_key? @numbers, :"#{number}"
+  def exists?(number) do
+    Map.has_key? @numbers, String.to_atom(number)
   end
 end
