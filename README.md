@@ -1,6 +1,7 @@
 # CcValidation
 
-[![Build Status](https://travis-ci.org/mtchavez/ex_cc_validation.svg?branch=master)](https://travis-ci.org/mtchavez/ex_cc_validation)
+[![build status](https://gitlab.com/mtchavez/ex_cc_validation/badges/master/build.svg)](https://gitlab.com/mtchavez/ex_cc_validation/commits/master)
+[![coverage report](https://gitlab.com/mtchavez/ex_cc_validation/badges/master/coverage.svg)](https://gitlab.com/mtchavez/ex_cc_validation/commits/master)
 
 Credit Card format validation
 

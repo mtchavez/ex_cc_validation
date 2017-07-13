@@ -12,10 +12,20 @@ defmodule CcValidation.Mixfile do
       description: description(),
       package: package(),
 
+      # Test
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+
+
       # Docs
       name: "CcValidation",
-      source_url: "https://github.com/mtchavez/ex_cc_validation",
-      homepage_url: "https://github.com/mtchavez/ex_cc_validation",
+      source_url: "https://gitlab.com/mtchavez/ex_cc_validation",
+      homepage_url: "https://gitlab.com/mtchavez/ex_cc_validation",
       docs: [
         main: "CcValidation", # The main page in the docs
         extras: ["README.md"]
@@ -42,8 +52,12 @@ defmodule CcValidation.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      # Dev
       {:dogma, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+
+      # Test
+      {:excoveralls, "~> 0.7", only: :test}
     ]
   end
 
@@ -61,7 +75,9 @@ defmodule CcValidation.Mixfile do
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["mtchavez"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/mtchavez/ex_cc_validation"}
+      links: %{
+        "Project Source Code" => "https://gitlab.com/mtchavez/ex_cc_validation"
+      }
     ]
   end
 end
