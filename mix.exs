@@ -14,7 +14,12 @@ defmodule CcValidation.Mixfile do
 
       # Test
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
 
 
       # Docs
@@ -49,6 +54,9 @@ defmodule CcValidation.Mixfile do
     [
       {:dogma, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+
+      # Dev
+      {:dogma, "~> 0.1", only: :dev},
 
       # Test
       {:excoveralls, "~> 0.7", only: :test}
