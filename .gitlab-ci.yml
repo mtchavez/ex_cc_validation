@@ -24,16 +24,13 @@ test:
   <<: *job_definition
   stage: test
 
-test_1.3:
-  <<: *job_definition
-  image: elixir:1.3
-  stage: test
-
 dogma:
   <<: *job_definition
   stage: test
   script:
     - mix dogma
+  variables:
+    MIX_ENV: "dev"
 
 coverage:
   image: alpine
