@@ -12,6 +12,11 @@ defmodule CcValidation.Mixfile do
       description: description(),
       package: package(),
 
+      # Test
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
+
+
       # Docs
       name: "CcValidation",
       source_url: "https://github.com/mtchavez/ex_cc_validation",
@@ -43,7 +48,10 @@ defmodule CcValidation.Mixfile do
   defp deps do
     [
       {:dogma, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+
+      # Test
+      {:excoveralls, "~> 0.7", only: :test}
     ]
   end
 
