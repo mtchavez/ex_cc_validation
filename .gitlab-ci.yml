@@ -1,0 +1,43 @@
+variables:
+  MIX_ENV: "test"
+
+stages:
+  - build
+  - test
+  - post-test
+
+.job_template: &job_definition
+  image: elixir:1.4
+  before_script:
+    - apt-get update
+    - mix local.hex --force
+    - mix local.rebar --force
+    - mix deps.get
+  script:
+    - "mix coveralls.html | tee cov.out"
+  artifacts:
+    paths:
+      - cov.out
+      - cover/
+
+test:
+  <<: *job_definition
+  stage: test
+
+test_1.3:
+  <<: *job_definition
+  image: elixir:1.3
+  stage: test
+
+dogma:
+  <<: *job_definition
+  stage: test
+  script:
+    - mix dogma
+
+coverage:
+  image: alpine
+  stage: post-test
+  script:
+    - cat cov.out
+  coverage: '/\[TOTAL\]\s+(\d+\.\d+%)$/'
