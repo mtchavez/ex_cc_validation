@@ -1,5 +1,6 @@
 # CcValidation
 
+[![Hex Version](https://img.shields.io/hexpm/v/cc_validation.svg)](https://hex.pm/packages/cc_validation)
 [![build status](https://gitlab.com/mtchavez/ex_cc_validation/badges/master/build.svg)](https://gitlab.com/mtchavez/ex_cc_validation/commits/master)
 [![coverage report](https://gitlab.com/mtchavez/ex_cc_validation/badges/master/coverage.svg)](https://gitlab.com/mtchavez/ex_cc_validation/commits/master)
 
